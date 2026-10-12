@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Personal portfolio of Kaatam Lakshmi Samaikya - AI & Data Science student and Web Developer.">
+    <title>Samaikya | Portfolio</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, #3d2b1f 0%, #2c1e14 50%, #1a120c 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            color: #f5f5f4;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #e8c39e, #d4a574, #b87333);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(184, 115, 51, 0.18);
+            backdrop-filter: blur(14px);
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(184, 115, 51, 0.45);
+            box-shadow: 0 12px 40px rgba(184, 115, 51, 0.15);
+        }
+
+        .interactive-card {
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .interactive-card:hover {
+            transform: translateY(-8px);
+            border-color: #b87333;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35), 0 0 20px rgba(184, 115, 51, 0.15);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #b87333, #a05a2c);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(184, 115, 51, 0.35);
+        }
+
+        .btn-outline {
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline:hover {
+            background: rgba(184, 115, 51, 0.15);
+            border-color: #b87333;
+            transform: translateY(-2px);
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #b87333;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 19px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #b87333, transparent);
+        }
+
+        .skill-card {
+            transition: all 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-6px) scale(1.03);
+            border-color: #b87333;
+            box-shadow: 0 10px 25px rgba(184, 115, 51, 0.2);
+        }
+
+        section {
+            scroll-margin-top: 90px;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.7s ease forwards;
+        }
+
+        .code-window {
+            box-shadow: 0 0 40px rgba(184, 115, 51, 0.12);
+            transition: box-shadow 0.4s ease;
+        }
+
+        .code-window:hover {
+            box-shadow: 0 0 55px rgba(184, 115, 51, 0.22);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header class="fixed top-0 z-50 w-full border-b border-white/10 bg-black/40 backdrop-blur-xl">
+        <nav class="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
+            <a href="#home" class="text-xl font-bold tracking-tight">
+                My<span class="text-amber-500">Portfolio.</span>
+            </a>
+
+            <button id="menuBtn" class="rounded-lg border border-white/20 px-3 py-2 md:hidden"
+                aria-label="Toggle navigation">
+                ☰
+            </button>
+
+            <div id="navLinks"
+                class="absolute left-0 top-full hidden w-full flex-col gap-5 border-b border-white/10 bg-[#2c1e14]/95 p-5 backdrop-blur-xl md:static md:flex md:w-auto md:flex-row md:items-center md:border-0 md:bg-transparent md:p-0">
+                <a class="nav-link hover:text-amber-400" href="#home">Home</a>
+                <a class="nav-link hover:text-amber-400" href="#about">About</a>
+                <a class="nav-link hover:text-amber-400" href="#skills">Skills</a>
+                <a class="nav-link hover:text-amber-400" href="#projects">Projects</a>
+                <a class="nav-link hover:text-amber-400" href="#education">Education</a>
+                <a href="#contact" class="btn-primary rounded-full px-5 py-2.5 text-sm font-semibold text-white">
+                    Contact Me
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero -->
+        <section id="home"
+            class="mx-auto grid min-h-screen max-w-6xl items-center gap-12 px-5 pb-16 pt-32 md:grid-cols-2">
+            <div class="fade-in">
+                <p class="mb-4 font-semibold tracking-wide text-amber-500">
+                    HELLO, WELCOME TO MY PORTFOLIO
+                </p>
+
+                <h1 class="text-4xl font-extrabold leading-tight sm:text-6xl">
+                    Hi, I'm <span class="gradient-text">Samaikya</span>
+                </h1>
+
+                <h2 class="mt-4 text-2xl font-semibold text-stone-300">
+                    AI & Data Science Student | Web Developer
+                </h2>
+
+                <p class="mt-6 max-w-xl leading-8 text-stone-400">
+                    B.Tech student in Artificial Intelligence & Data Science with a strong foundation in
+                    programming and modern web development. Passionate about building clean, useful,
+                    and practical digital experiences.
+                </p>
+
+                <div class="mt-8 flex flex-wrap gap-4">
+                    <a href="#projects" class="btn-primary rounded-full px-7 py-3.5 font-semibold text-white">
+                        Explore My Work →
+                    </a>
+                    <a href="https://github.com/samaikya277" target="_blank" rel="noopener noreferrer"
+                        class="btn-outline rounded-full border border-amber-700/60 px-7 py-3.5 font-semibold">
+                        GitHub Profile
+                    </a>
+                </div>
+            </div>
+
+            <div class="mx-auto w-full max-w-md fade-in">
+                <div class="glass code-window rounded-3xl p-5">
+                    <div class="rounded-2xl bg-black/40 p-6">
+                        <div class="mb-6 flex gap-2">
+                            <span class="h-3.5 w-3.5 rounded-full bg-red-500"></span>
+                            <span class="h-3.5 w-3.5 rounded-full bg-yellow-500"></span>
+                            <span class="h-3.5 w-3.5 rounded-full bg-green-500"></span>
+                        </div>
+                        <p class="text-amber-500">// A little about me</p>
+                        <p class="mt-4 text-lg">const developer = {</p>
+                        <div class="space-y-3 pl-5 text-sm sm:text-base">
+                            <p><span class="text-amber-500">name</span>: "Kaatam Lakshmi Samaikya",</p>
+                            <p><span class="text-amber-500">field</span>: "AI & Data Science",</p>
+                            <p><span class="text-amber-500">focus</span>: "Web Development",</p>
+                            <p><span class="text-amber-500">mindset</span>: "Always Learning"</p>
+                        </div>
+                        <p class="mt-4 text-lg">};</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About -->
+        <section id="about" class="border-t border-white/10 bg-black/25 px-5 py-24">
+            <div class="mx-auto max-w-4xl">
+                <p class="font-semibold uppercase tracking-widest text-amber-500">Get to know me</p>
+                <h2 class="mt-3 text-3xl font-bold sm:text-4xl">About Me</h2>
+
+                <p class="mt-6 leading-8 text-stone-400">
+                    I am a B.Tech student in Artificial Intelligence and Data Science at KIET, Korangi,
+                    with a Diploma in Computer Science & Engineering. I have hands-on experience with
+                    Python, Java, C, HTML, CSS, JavaScript, Git, and GitHub.
+                </p>
+
+                <p class="mt-4 leading-8 text-stone-400">
+                    I enjoy turning ideas into clean and functional websites, learning new technologies,
+                    and continuously improving my development skills through real projects.
+                </p>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section id="skills" class="mx-auto max-w-6xl px-5 py-24">
+            <p class="font-semibold uppercase tracking-widest text-amber-500">What I know</p>
+            <h2 class="mt-3 text-3xl font-bold sm:text-4xl">Technical Skills</h2>
+
+            <div class="mt-10 grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
+                <div class="skill-card glass rounded-2xl p-6 text-center">
+                    <p class="text-lg font-bold text-orange-400">C</p>
+                    <p class="mt-2 text-sm text-stone-400">Programming</p>
+                </div>
+                <div class="skill-card glass rounded-2xl p-6 text-center">
+                    <p class="text-lg font-bold text-red-400">Java</p>
+                    <p class="mt-2 text-sm text-stone-400">Programming</p>
+                </div>
+                <div class="skill-card glass rounded-2xl p-6 text-center">
+                    <p class="text-lg font-bold text-green-400">Python</p>
+                    <p class="mt-2 text-sm text-stone-400">Programming</p>
+                </div>
+                <div class="skill-card glass rounded-2xl p-6 text-center">
+                    <p class="text-lg font-bold text-orange-300">HTML5</p>
+                    <p class="mt-2 text-sm text-stone-400">Structure</p>
+                </div>
+                <div class="skill-card glass rounded-2xl p-6 text-center">
+                    <p class="text-lg font-bold text-sky-400">CSS</p>
+                    <p class="mt-2 text-sm text-stone-400">Styling</p>
+                </div>
+                <div class="skill-card glass rounded-2xl p-6 text-center">
+                    <p class="text-lg font-bold text-yellow-400">JavaScript</p>
+                    <p class="mt-2 text-sm text-stone-400">Interactivity</p>
+                </div>
+                <div class="skill-card glass rounded-2xl p-6 text-center">
+                    <p class="text-lg font-bold text-stone-200">Git</p>
+                    <p class="mt-2 text-sm text-stone-400">Version Control</p>
+                </div>
+                <div class="skill-card glass rounded-2xl p-6 text-center">
+                    <p class="text-lg font-bold text-amber-500">GitHub</p>
+                    <p class="mt-2 text-sm text-stone-400">Code Hosting</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section id="projects" class="border-y border-white/10 bg-black/25 px-5 py-24">
+            <div class="mx-auto max-w-6xl">
+                <p class="font-semibold uppercase tracking-widest text-amber-500">What I build</p>
+                <h2 class="mt-3 text-3xl font-bold sm:text-4xl">Featured Projects</h2>
+
+                <div class="mt-12 grid gap-7 md:grid-cols-2">
+
+                    <!-- Project 1: Portfolio -->
+                    <article class="interactive-card glass rounded-2xl p-7">
+                        <div
+                            class="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-amber-800/30 text-2xl text-amber-500">
+                            ⌘
+                        </div>
+                        <p class="text-sm font-medium text-amber-500">Web Development</p>
+                        <h3 class="mt-2 text-xl font-bold">Personal Portfolio</h3>
+                        <p class="mt-4 text-sm leading-7 text-stone-400">
+                            A fully responsive personal portfolio website showcasing my skills, education,
+                            projects and contact information with modern design and smooth interactions.
+                        </p>
+                        <p class="mt-4 text-xs text-stone-500">HTML • Tailwind CSS • JavaScript</p>
+                        <a href="https://github.com/samaikya277/my-portfolio" target="_blank"
+                            class="mt-6 inline-flex items-center gap-1 font-semibold text-amber-500 transition hover:text-amber-400">
+                            View Repository →
+                        </a>
+                    </article>
+
+                    <!-- Project 2: Campus Navigation -->
+                    <article class="interactive-card glass rounded-2xl p-7">
+                        <div
+                            class="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-amber-800/30 text-2xl text-amber-500">
+                            ⌖
+                        </div>
+                        <p class="text-sm font-medium text-amber-500">Web Application</p>
+                        <h3 class="mt-2 text-xl font-bold">Smart Campus Navigation</h3>
+                        <p class="mt-4 text-sm leading-7 text-stone-400">
+                            Interactive campus navigation system with map markers and roadmap navigation
+                            using Leaflet & OpenStreetMap, powered by Django backend.
+                        </p>
+                        <p class="mt-4 text-xs text-stone-500">Django • Leaflet • SQLite • Tailwind • JS</p>
+                        <span class="mt-6 inline-block text-sm text-stone-500">Project details coming soon</span>
+                    </article>
+
+                    <!-- Project 3: Cybersecurity Access Log Monitoring -->
+                    <article class="interactive-card glass rounded-2xl p-7">
+                        <div
+                            class="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-amber-800/30 text-2xl text-amber-500">
+                            ⌁
+                        </div>
+                        <p class="text-sm font-medium text-amber-500">Security Project</p>
+                        <h3 class="mt-2 text-xl font-bold">Access Log Monitoring</h3>
+                        <p class="mt-4 text-sm leading-7 text-stone-400">
+                            Web-based application that records login activity, detects repeated failed attempts,
+                            unusual login times and new locations, and generates alerts for suspicious activity.
+                        </p>
+                        <p class="mt-4 text-xs text-stone-500">Python • Flask • SQLite • Tailwind • JS • SMTP</p>
+                        <a href="https://github.com/samaikya277/CyberSecurity_Access_Log_Monitoring" target="_blank"
+                            class="mt-6 inline-flex items-center gap-1 font-semibold text-amber-500 transition hover:text-amber-400">
+                            View Repository →
+                        </a>
+                    </article>
+
+                    <!-- Project 4: WeatherGPT -->
+                    <article class="interactive-card glass rounded-2xl p-7">
+                        <div
+                            class="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-amber-800/30 text-2xl text-amber-500">
+                            ☁
+                        </div>
+                        <p class="text-sm font-medium text-amber-500">Concept Project</p>
+                        <h3 class="mt-2 text-xl font-bold">WeatherGPT – Conversational Weather</h3>
+                        <p class="mt-4 text-sm leading-7 text-stone-400">
+                            A conversational weather platform concept that combines forecasting, alerts,
+                            climate information and GIS-based risk visualization with a modern React frontend
+                            and Django + PostgreSQL backend.
+                        </p>
+                        <p class="mt-4 text-xs text-stone-500">React • Django • PostgreSQL • Weather APIs</p>
+                        <span class="mt-6 inline-block text-sm text-stone-500">Concept / In Progress</span>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Education -->
+        <section id="education" class="mx-auto max-w-4xl px-5 py-24">
+            <p class="font-semibold uppercase tracking-widest text-amber-500">My Academic Journey</p>
+            <h2 class="mt-3 text-3xl font-bold sm:text-4xl">Education</h2>
+            <p class="mt-4 max-w-2xl text-stone-400">
+                Building a strong foundation from school to specialized studies in Artificial Intelligence and Data
+                Science.
+            </p>
+
+            <div class="relative mt-14 space-y-8">
+                <div class="timeline-line hidden md:block"></div>
+
+                <!-- B.Tech -->
+                <div class="interactive-card glass relative rounded-2xl p-7 md:ml-12">
+                    <div
+                        class="absolute -left-[41px] top-8 hidden h-5 w-5 rounded-full border-4 border-amber-600 bg-[#1a120c] md:block">
+                    </div>
+
+                    <div class="flex flex-wrap items-start justify-between gap-3">
+                        <div>
+                            <span
+                                class="inline-block rounded-full bg-amber-800/40 px-3.5 py-1 text-xs font-semibold text-amber-400">
+                                Currently Pursuing
+                            </span>
+                            <h3 class="mt-3 text-xl font-bold">B.Tech in Artificial Intelligence & Data Science</h3>
+                            <p class="mt-1 font-medium text-amber-500">KIET, Korangi</p>
+                        </div>
+                        <p class="text-sm text-stone-400">2026 – 2029</p>
+                    </div>
+
+                    <p class="mt-4 text-sm leading-7 text-stone-400">
+                        Specializing in Artificial Intelligence, Machine Learning, Data Science and modern
+                        software development with a strong focus on practical projects and real-world applications.
+                    </p>
+
+                    <div class="mt-5 flex flex-wrap gap-2">
+                        <span class="rounded-full bg-white/5 px-3.5 py-1 text-xs text-stone-300">AI & ML</span>
+                        <span class="rounded-full bg-white/5 px-3.5 py-1 text-xs text-stone-300">Data Science</span>
+                        <span class="rounded-full bg-white/5 px-3.5 py-1 text-xs text-stone-300">Web Development</span>
+                        <span class="rounded-full bg-white/5 px-3.5 py-1 text-xs text-stone-300">Software
+                            Engineering</span>
+                    </div>
+                </div>
+
+                <!-- Diploma -->
+                <div class="interactive-card glass relative rounded-2xl p-7 md:ml-12">
+                    <div
+                        class="absolute -left-[41px] top-8 hidden h-5 w-5 rounded-full border-4 border-amber-700 bg-[#1a120c] md:block">
+                    </div>
+
+                    <div class="flex flex-wrap items-start justify-between gap-3">
+                        <div>
+                            <h3 class="text-xl font-bold">Diploma in Computer Science & Engineering</h3>
+                            <p class="mt-1 font-medium text-amber-500">Andhra Polytechnic, Kakinada</p>
+                        </div>
+                        <p class="text-sm text-stone-400">2023 – 2026</p>
+                    </div>
+
+                    <p class="mt-4 text-sm leading-7 text-stone-400">
+                        Built a solid foundation in computer science fundamentals, programming (C, Java, Python),
+                        web technologies, databases and software development practices.
+                    </p>
+
+                    <div class="mt-5 flex flex-wrap gap-2">
+                        <span class="rounded-full bg-white/5 px-3.5 py-1 text-xs text-stone-300">Programming</span>
+                        <span class="rounded-full bg-white/5 px-3.5 py-1 text-xs text-stone-300">Web Development</span>
+                        <span class="rounded-full bg-white/5 px-3.5 py-1 text-xs text-stone-300">Databases</span>
+                    </div>
+                </div>
+
+                <!-- SSC -->
+                <div class="interactive-card glass relative rounded-2xl p-7 md:ml-12">
+                    <div
+                        class="absolute -left-[41px] top-8 hidden h-5 w-5 rounded-full border-4 border-stone-600 bg-[#1a120c] md:block">
+                    </div>
+
+                    <div class="flex flex-wrap items-start justify-between gap-3">
+                        <div>
+                            <h3 class="text-xl font-bold">SSC – Secondary School Certificate</h3>
+                            <p class="mt-1 font-medium text-amber-500">ZPP High School, Korangi</p>
+                        </div>
+                        <p class="text-sm text-stone-400">2022 – 2023</p>
+                    </div>
+
+                    <p class="mt-4 text-sm leading-7 text-stone-400">
+                        Completed secondary education with strong fundamentals in mathematics, science
+                        and analytical thinking that support my engineering journey.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-12 grid gap-6 sm:grid-cols-2">
+                <div class="glass rounded-2xl p-6">
+                    <h4 class="font-semibold text-amber-500">Languages</h4>
+                    <p class="mt-2 text-stone-300">English • Telugu</p>
+                </div>
+                <div class="glass rounded-2xl p-6">
+                    <h4 class="font-semibold text-amber-500">Soft Skills</h4>
+                    <p class="mt-2 text-sm leading-6 text-stone-300">
+                        Problem-solving • Analytical Thinking • Adaptability • Time Management • Team Collaboration
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="border-t border-white/10 bg-black/25 px-5 py-24">
+            <div class="mx-auto max-w-3xl text-center">
+                <p class="font-semibold uppercase tracking-widest text-amber-500">Let's connect</p>
+                <h2 class="mt-3 text-3xl font-bold sm:text-4xl">Contact Me</h2>
+                <p class="mx-auto mt-5 max-w-xl leading-8 text-stone-400">
+                    Open to internships, collaborations and opportunities in web development
+                    and AI-related projects.
+                </p>
+
+                <a href="mailto:samaikyakaatam786@gmail.com"
+                    class="btn-primary mt-8 inline-block rounded-full px-8 py-3.5 font-semibold text-white">
+                    Send Me an Email
+                </a>
+
+                <div class="mt-8 flex justify-center gap-8 text-sm">
+                    <a href="https://github.com/samaikya277" target="_blank"
+                        class="text-amber-500 transition hover:text-amber-400">GitHub</a>
+                    <a href="https://linkedin.com/in/" target="_blank"
+                        class="text-amber-500 transition hover:text-amber-400">LinkedIn</a>
+                </div>
+
+                <p class="mt-8 text-sm text-stone-500">
+                    📍 Lakshmi Pathi Puram, Tallarevu • 📞 6300290799
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="px-5 py-8 text-center text-sm text-stone-500">
+        <p>© <span id="year"></span> Kaatam Lakshmi Samaikya. Built with HTML, Tailwind CSS & JavaScript.</p>
+    </footer>
+
+    <script>
+        const menuBtn = document.getElementById("menuBtn");
+        const navLinks = document.getElementById("navLinks");
+
+        menuBtn.addEventListener("click", () => {
+            navLinks.classList.toggle("hidden");
+        });
+
+        document.querySelectorAll(".nav-link").forEach(link => {
+            link.addEventListener("click", () => {
+                navLinks.classList.add("hidden");
+            });
+        });
+
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+
+</body>
+
+</html>
